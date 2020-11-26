@@ -64,3 +64,35 @@ Persona.prototype.toHTMLRow = function (){
             
             return sFila;
             }
+    
+// Esta sería la clase por el metodo antiguo
+function Multa(iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion,dFecha){
+   // Poligono.call(this,3);    // Llamada al constructor del objeto base
+    this.idmulta = iIdMulta;
+    this.nifconductor = sNifConductor;
+    this.nifguardia=sNifGuardia;
+    this.importe=fImporte;
+    this.pagada=bPagada;
+    this.descripcion=sDescripcion;
+    this.fecha=new Date(dFecha);
+};
+
+function Leve(iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion,dFecha,bBonificada)
+{
+    Multa.call(this, iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion,dFecha);
+    this.bonificada=bBonificada;
+}
+
+// Aqui es donde heredamos propiedades y metodos
+Leve.prototype = Object.create(Multa.prototype);
+Leve.prototype.constructor = Leve;
+
+function Grave(iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion,dFecha,iPuntos)
+{
+    Multa.call(this, iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion,dFecha);
+    this.puntos=iPuntos;
+}
+
+// Aqui es donde heredamos propiedades y metodos
+Grave.prototype = Object.create(Multa.prototype);
+Grave.prototype.constructor = Grave;
