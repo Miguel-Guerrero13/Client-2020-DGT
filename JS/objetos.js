@@ -23,8 +23,8 @@ Persona.prototype.toHTMLRow = function (){
 
     class Conductor extends Persona{
 
-        constructor(dCaducidadCarnet){
-            super(this);
+        constructor(dni,nombre,apellidos,direccion,dCaducidadCarnet){
+            super(dni,nombre,apellidos,direccion,dCaducidadCarnet);
             this.caducidadCarnet=dCaducidadCarnet;
 
         }
@@ -32,18 +32,35 @@ Persona.prototype.toHTMLRow = function (){
 
     Conductor.prototype.toHTMLRow = function (){
 
-        let dFila = "<tr>";
-        dFila+="<td>"+this.caducidadCarnet+"</td>";
-        dFila += "</tr>";
+        let sFila = "<tr>";
+        sFila+="<td>"+this.dni+"</td>";
+        sFila+="<td>"+this.nombre+"</td>";
+        sFila+="<td>"+this.apellidos+"</td>";
+        sFila+="<td>"+this.direccion+"</td>";
+        sFila+="<td>"+this.caducidadCarnet+"</td>";
+        sFila += "</tr>";
         
-        return dFila;
+        return sFila;
         }
 
         class GuardiaCivil extends Persona{
 
-            constructor(sPuesto){
-                super(this);
+            constructor(dni,nombre,apellidos,direccion,sPuesto){
+                super(dni,nombre,apellidos,direccion,sPuesto);
                 this.puesto=sPuesto;
     
             }
         }
+
+        GuardiaCivil.prototype.toHTMLRow = function (){
+
+            let sFila = "<tr>";
+            sFila+="<td>"+this.dni+"</td>";
+            sFila+="<td>"+this.nombre+"</td>";
+            sFila+="<td>"+this.apellidos+"</td>";
+            sFila+="<td>"+this.direccion+"</td>";
+            sFila+="<td>"+this.puesto+"</td>";
+            sFila += "</tr>";
+            
+            return sFila;
+            }
