@@ -24,8 +24,26 @@ Persona.prototype.toHTMLRow = function (){
     class Conductor extends Persona{
 
         constructor(dCaducidadCarnet){
-            super("pepe","pepe","pepe","pwpw");
+            super(this);
             this.caducidadCarnet=dCaducidadCarnet;
 
         }
     }
+
+    Conductor.prototype.toHTMLRow = function (){
+
+        let dFila = "<tr>";
+        dFila+="<td>"+this.caducidadCarnet+"</td>";
+        dFila += "</tr>";
+        
+        return dFila;
+        }
+
+        class GuardiaCivil extends Persona{
+
+            constructor(sPuesto){
+                super(this);
+                this.puesto=sPuesto;
+    
+            }
+        }
