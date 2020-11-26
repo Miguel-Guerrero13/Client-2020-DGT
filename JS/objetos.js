@@ -100,7 +100,7 @@ Grave.prototype.constructor = Grave;
 //Clase nueva
 
 class DGT {
-	constructor(_multas,_personas){
+	constructor(){
         this.multas=[];
         this.personas=[];
     }
