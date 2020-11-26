@@ -96,3 +96,12 @@ function Grave(iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion
 // Aqui es donde heredamos propiedades y metodos
 Grave.prototype = Object.create(Multa.prototype);
 Grave.prototype.constructor = Grave;
+
+//Clase nueva
+
+class DGT {
+	constructor(_multas,_personas){
+        this.multas=[];
+        this.personas=[];
+    }
+}
