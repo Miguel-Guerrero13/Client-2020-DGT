@@ -1,15 +1,13 @@
-//Creación del objeto persona en método nuevo con el toHtmlRow
+//Creación del objeto persona en método antiguo con el toHtmlRow
 
-class Persona {
-	constructor(sNif,sNombre,sApellidos,sDireccion){
-        this.dni=sNif;
+function Persona(sNif,sNombre,sApellidos,sDireccion){
+    this.dni=sNif;
         this.nombre=sNombre;
         this.apellidos=sApellidos;
         this.direccion=sDireccion;
-    }
-}
+ }
 
-Persona.prototype.toHTMLRow = function (){
+ Persona.prototype.toHTMLRow = function (){
 
     let sFila = "<tr>";
     sFila+="<td>"+this.dni+"</td>";
@@ -21,14 +19,15 @@ Persona.prototype.toHTMLRow = function (){
     return sFila;
     }
 
-    class Conductor extends Persona{
-
-        constructor(dni,nombre,apellidos,direccion,dCaducidadCarnet){
-            super(dni,nombre,apellidos,direccion,dCaducidadCarnet);
-            this.caducidadCarnet=dCaducidadCarnet;
-
-        }
+    function Conductor(sNif,sNombre,sApellidos,sDireccion,dCaducidadCarnet)
+    {
+        Persona.call(this,sNif,sNombre,sApellidos,sDireccion);
+        this.caducidadCarnet=dCaducidadCarnet;
     }
+    
+    // Aqui es donde heredamos propiedades y metodos
+    Conductor.prototype = Object.create(Persona.prototype);
+    Conductor.prototype.constructor = Conductor;
 
     Conductor.prototype.toHTMLRow = function (){
 
@@ -43,17 +42,20 @@ Persona.prototype.toHTMLRow = function (){
         return sFila;
         }
 
-        class GuardiaCivil extends Persona{
 
-            constructor(dni,nombre,apellidos,direccion,sPuesto){
-                super(dni,nombre,apellidos,direccion,sPuesto);
-                this.puesto=sPuesto;
-    
-            }
+        function GuardiaCivil(sNif,sNombre,sApellidos,sDireccion,sPuesto)
+        {
+            Persona.call(this,sNif,sNombre,sApellidos,sDireccion);
+            this.puesto=sPuesto;
         }
+        
+        // Aqui es donde heredamos propiedades y metodos
+        GuardiaCivil.prototype = Object.create(Persona.prototype);
+        GuardiaCivil.prototype.constructor = GuardiaCivil;
 
-        GuardiaCivil.prototype.toHTMLRow = function (){
-
+    
+        Conductor.prototype.toHTMLRow = function (){
+    
             let sFila = "<tr>";
             sFila+="<td>"+this.dni+"</td>";
             sFila+="<td>"+this.nombre+"</td>";
@@ -64,44 +66,141 @@ Persona.prototype.toHTMLRow = function (){
             
             return sFila;
             }
-    
-// Esta sería la clase por el metodo antiguo
-function Multa(iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion,dFecha){
-   // Poligono.call(this,3);    // Llamada al constructor del objeto base
-    this.idmulta = iIdMulta;
-    this.nifconductor = sNifConductor;
-    this.nifguardia=sNifGuardia;
-    this.importe=fImporte;
-    this.pagada=bPagada;
-    this.descripcion=sDescripcion;
-    this.fecha=new Date(dFecha);
-};
 
-function Leve(iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion,dFecha,bBonificada)
-{
-    Multa.call(this, iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion,dFecha);
-    this.bonificada=bBonificada;
-}
-
-// Aqui es donde heredamos propiedades y metodos
-Leve.prototype = Object.create(Multa.prototype);
-Leve.prototype.constructor = Leve;
-
-function Grave(iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion,dFecha,iPuntos)
-{
-    Multa.call(this, iIdMulta, sNifConductor,sNifGuardia,fImporte,bPagada,sDescripcion,dFecha);
-    this.puntos=iPuntos;
-}
-
-// Aqui es donde heredamos propiedades y metodos
-Grave.prototype = Object.create(Multa.prototype);
-Grave.prototype.constructor = Grave;
 
 //Clase nueva
+
+class Multa {
+	constructor(iIdMulta,sNifConductor,sNifGuardia, fImporte,bPagada,sDescripcion,dFecha){
+        this.idMulta=iIdMulta;
+        this.nifConductror=sNifConductor;
+        this.nifGuardia=sNifGuardia;
+        this.importe=fImporte;
+        this.pagada=bPagada;
+        this.descripcion=sDescripcion;
+        this.fecha=dFecha;
+    }
+}
+
+Multa.prototype.toHTMLRow = function (){
+
+    let sFila = "<tr>";
+    sFila+="<td>"+this.idMulta+"</td>";
+    sFila+="<td>"+this.nifConductror+"</td>";
+    sFila+="<td>"+this.nifGuardia+"</td>";
+    sFila+="<td>"+this.importe+"</td>";
+    sFila+="<td>"+this.pagada+"</td>";
+    sFila+="<td>"+this.descripcion+"</td>";
+    sFila+="<td>"+this.fecha+"</td>";
+    sFila += "</tr>";
+    
+    return sFila;
+    }
+
+    
+    class Leve extends Multa{
+
+        constructor(iIdMulta,sNifConductor,sNifGuardia, fImporte,bPagada,sDescripcion,dFecha,bBonificada){
+            super(iIdMulta,sNifConductor,sNifGuardia, fImporte,bPagada,sDescripcion,dFecha);
+            this.bonificada=bBonificada;
+
+        }
+    }
+
+    Leve.prototype.toHTMLRow = function (){
+
+        let sFila = "<tr>";
+        sFila+="<td>"+this.idMulta+"</td>";
+        sFila+="<td>"+this.nifConductror+"</td>";
+        sFila+="<td>"+this.nifGuardia+"</td>";
+        sFila+="<td>"+this.importe+"</td>";
+        sFila+="<td>"+this.pagada+"</td>";
+        sFila+="<td>"+this.descripcion+"</td>";
+        sFila+="<td>"+this.fecha+"</td>";
+        sFila+="<td>"+this.bonificada+"</td>";
+        sFila += "</tr>";
+        
+        return sFila;
+        }
+
+
+        class Grave extends Multa{
+
+            constructor(iIdMulta,sNifConductor,sNifGuardia, fImporte,bPagada,sDescripcion,dFecha,iPuntos){
+                super(iIdMulta,sNifConductor,sNifGuardia, fImporte,bPagada,sDescripcion,dFecha);
+                this.puntos=iPuntos;
+    
+            }
+        }
+
+        Grave.prototype.toHTMLRow = function (){
+
+            let sFila = "<tr>";
+            sFila+="<td>"+this.idMulta+"</td>";
+            sFila+="<td>"+this.nifConductror+"</td>";
+            sFila+="<td>"+this.nifGuardia+"</td>";
+            sFila+="<td>"+this.importe+"</td>";
+            sFila+="<td>"+this.pagada+"</td>";
+            sFila+="<td>"+this.descripcion+"</td>";
+            sFila+="<td>"+this.fecha+"</td>";
+            sFila+="<td>"+this.puntos+"</td>";
+            sFila += "</tr>";
+            
+            return sFila;
+            }
+
+
+
 
 class DGT {
 	constructor(){
         this.multas=[];
         this.personas=[];
     }
+
+    altaConductor(oC){
+
+        let oConductorExistente = null;
+
+        oConductorExistente = this._buscarPersona(oC.dni);
+
+        if(oConductorExistente==null)
+        {
+           this.personas.push(oC);
+           alert("Alta de conductor realizada");
+        }
+           else
+           alert("Ya hay una persona con ese dni");
+        
+        }
+
+        altaGuardia(oC){
+
+            let oGuardiaExistente = null;
+    
+            oGuardiaExistente = this._buscarPersona(oC.dni);
+    
+            if(oGuardiaExistente==null)
+            {
+               this.personas.push(oC);
+               alert("Alta de conductor realizada");
+            }
+               else
+               alert("Ya hay una persona con ese dni");
+            
+            }
+
+
+
+
+    _buscarPersona(sDni){
+
+      let oConductorExistente=null;
+
+        oConductorExistente=this.personas.find(oC => oC.dni==sDni);
+
+        return oConductorExistente;
+
+    }
+    
 }
