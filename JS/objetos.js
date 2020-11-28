@@ -190,7 +190,7 @@ class DGT {
             
             }
 
-
+    
 
 
     _buscarPersona(sDni){

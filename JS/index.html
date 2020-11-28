@@ -44,6 +44,15 @@
           </div>
         </div>
         
+        
+         <!-- Button -->
+         <div class="form-group">
+          <label class="col-md-4 control-label" for="btnListadoBasico"></label>
+          <div class="col-md-4">
+            <input type="button" id="btnListadoBasico" name="btnListadoBasico" class="btn btn-primary" value="Registrar Multa" onclick="mostrarRegistrarMulta();" />
+          </div>
+        </div>
+
         <!-- Button -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="btnListadoBasico"></label>
@@ -195,9 +204,152 @@
                 
                 </fieldset>
                 </form>
-    </div>
 
+
+
+                <form class="form-horizontal" name="frmRegistrarMulta">
+                  <fieldset>
+                  
+                  <!-- Form Name -->
+                  <legend>Registrar Multa</legend>
+                  
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtCodigo">ID Multa</label>  
+                    <div class="col-md-4">
+                    <input id="txtIdMulta" name="txtIdMulta" type="text" placeholder="" class="form-control input-md">
+                      
+                    </div>
+                  </div>
+                  
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtNombre">Nif Conductor</label>  
+                    <div class="col-md-4">
+                    <input id="txtNifConductor" name="txtNifConductor" type="text" placeholder="" class="form-control input-md">
+                      
+                    </div>
+                  </div>
+                  
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtPrecio">Nif Guardia</label>  
+                    <div class="col-md-4">
+                    <input id="txtNifGuardia" name="txtNifGuardia" type="text" placeholder="" class="form-control input-md">
+                      
+                    </div>
+                  </div>
+                  
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtUnidades">Importe</label>  
+                    <div class="col-md-4">
+                    <input id="txtImporteMulta" name="txtImporteMulta" type="text" placeholder="" class="form-control input-md">
+                      
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-4 control-label" for="txtUnidades">Descripción</label>  
+                      <div class="col-md-4">
+                      <input id="txtDescripcionMulta" name="txtDescripcionMulta" type="text" placeholder="" class="form-control input-md">
+                        
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="txtUnidades">Fecha</label>  
+                      <div class="col-md-4">
+                      <input id="txtFechaMulta" name="txtFechaMulta" type="date" placeholder="" class="form-control input-md">
+                        
+                      </div>
+                    </div>
+
+                    
+<!--CheckBox-->
+<!--<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" onchange="showContent();">
+  <label class="form-check-label" for="inlineCheckbox1">Leve</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" onchange="showContent();">
+  <label class="form-check-label" for="inlineCheckbox2">Grave</label>
+</div>
+-->
+<!--Fin checkbox-->
+
+<!--Prueba con radio buttons-->
+
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineCheckbox1" id="inlineCheckbox1" value="Leve" onchange="showContent();">
+  <label class="form-check-label" for="inlineRadio1">Leve</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineCheckbox1" id="inlineCheckbox2" value="Grave" onchange="showContent();">
+  <label class="form-check-label" for="inlineRadio2">Grave</label>
+</div>
+
+<!--Fin radio buttons-->
+
+                    <div id="div1">
+                      <label class="form-check-label">Bonificada</label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="si">
+                        <label class="form-check-label" for="inlineRadio1">Si</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="no">
+                        <label class="form-check-label" for="inlineRadio2">No</label>
+                      </div>
+                    </div>
+
+                    <div id="div2">
+                      <label class="form-check-label">Puntos</label>
+                      <textarea id="puntos" name="puntos"></textarea>
+                    </div>
+                  <!-- Button -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="btnaceptarAltaConductor"></label>
+                    <div class="col-md-4">
+                      <input type="button" id="btnaceptarAltaConductor" name="btnaceptarAltaConductor" class="btn btn-primary" value="Aceptar" onclick="aceptarRegistrarMulta();" />
+                    </div>
+                  </div>
+                  
+                  </fieldset>
+                  </form>
+    </div>
     <script src="objetos.js"></script>
     <script src="codigo.js"></script>
+    <script type = "text/javascript">
+    ocultarDivs();
+    function ocultarDivs()
+    {
+      element = document.getElementById("div1");
+      element2 = document.getElementById("div2");
+
+      element.style.display='none';
+      element2.style.display= 'none';
+    }
+      function showContent()
+      {
+          element = document.getElementById("div1");
+          element2 = document.getElementById("div2");
+          comprobar = document.getElementById("inlineCheckbox1");
+          comprobar2 = document.getElementById("inlineCheckbox2");
+          if (comprobar.checked) {
+              element.style.display = 'block';
+              element2.style.display = 'none';
+          }
+          else if(comprobar2.checked)
+          {
+            element.style.display = 'none';
+            element2.style.display= 'block';
+            
+          }
+          else{
+            element.style.display='none';
+            element2.style.display= 'none';
+          }
+      }
+     
+  </script>
 </body>
 </html>
