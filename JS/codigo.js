@@ -74,8 +74,17 @@ function aceptarRegistrarMulta(){
     }
     else
     {
-        let oM = new Grave(iMulta,sNifConductor, sNifGuardia, fImporteMulta,bPagada ,sDescripcionMulta,dFechaMulta,iPuntosMulta);
+        if(iPuntosMulta>=1 && iPuntosMulta<=15){
+
+            let oM = new Grave(iMulta,sNifConductor, sNifGuardia, fImporteMulta,bPagada ,sDescripcionMulta,dFechaMulta,iPuntosMulta);
         oDGT.altaMultaGrave(oM);
+
+        }else{
+
+            alert("Introduce unos puntos entre 1 y 15");
+
+        }
+        
     }
 
     
