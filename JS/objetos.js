@@ -190,7 +190,19 @@ class DGT {
             
             }
 
-    
+            altaMultaLeve(oM){
+        
+                   this.multas.push(oM);
+                
+                }
+
+                altaMultaGrave(oM){
+        
+                    this.multas.push(oM);
+                 
+                 }
+
+
 
 
     _buscarPersona(sDni){
