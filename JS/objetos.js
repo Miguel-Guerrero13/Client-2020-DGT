@@ -226,6 +226,24 @@ class DGT {
                  }
 
 
+                 pagaMulta(oM){
+        
+                    let oMultaExistente = null;
+        
+                    oMultaExistente = this._buscarMultas(oM.idMulta);
+        
+                if(oMultaExistente==null)
+                {
+                   alert("No existe ninguna multa con ese nombre");
+                }else{
+
+                   this.multas.pop(oMultaExistente);
+                   alert("Multa borrada");
+                }
+                     }
+            
+
+
 
 
     _buscarPersona(sDni){

@@ -6,12 +6,18 @@ function ocultarFormularios(){
 frmAltaConductor.style.display = "none";
 frmAltaGuardia.style.display = "none";
 frmRegistrarMulta.style.display="none";
+frmPagaMulta.style.display="none";
 }
 
 function mostrarAltaConductor(){
 ocultarFormularios();
 frmAltaConductor.style.display = "block";
 }
+
+function mostrarPagaMulta(){
+    ocultarFormularios();
+    frmPagaMulta.style.display = "block";
+    }
 
 function mostrarAltaGuardia(){
 ocultarFormularios();
@@ -35,6 +41,18 @@ function aceptarAltaConductor(){
 
     // Inserto en el almacen
     oDGT.altaConductor(oC);
+
+    ocultarFormularios();
+}
+
+function aceptarPagaMulta(){
+
+    let idMulta = frmPagaMulta.txtMulta.value.trim();
+
+    let oC = new Multa(idMulta);
+
+    // Inserto en el almacen
+    oDGT.pagaMulta(oC);
 
     ocultarFormularios();
 }
