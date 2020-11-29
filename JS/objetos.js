@@ -191,14 +191,37 @@ class DGT {
             }
 
             altaMultaLeve(oM){
-        
-                   this.multas.push(oM);
-                
+
+
+                let oMultaExistente = null;
+    
+                oMultaExistente = this._buscarMultas(oM.idMulta);
+    
+            if(oMultaExistente==null)
+            {
+                this.multas.push(oM);
+               alert("Alta de multa realizada");
+            }
+               else
+               alert("Ya hay una multa con ese id");
+
                 }
 
-                altaMultaGrave(oM){
+            
+            
+            altaMultaGrave(oM){
         
-                    this.multas.push(oM);
+                let oMultaExistente = null;
+    
+                oMultaExistente = this._buscarMultas(oM.idMulta);
+    
+            if(oMultaExistente==null)
+            {
+                this.multas.push(oM);
+               alert("Alta de multa realizada");
+            }
+               else
+               alert("Ya hay una multa con ese id");
                  
                  }
 
@@ -214,5 +237,16 @@ class DGT {
         return oConductorExistente;
 
     }
+
+    _buscarMultas(sIdMulta){
+
+        let oMultaExistente=null;
+  
+          oMultaExistente=this.multas.find(oM => oM.idMulta==sIdMulta);
+  
+          return  oMultaExistente;
+  
+      }
+
     
 }
