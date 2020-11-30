@@ -235,10 +235,14 @@ class DGT {
                 if(oMultaExistente==null)
                 {
                    alert("No existe ninguna multa con ese nombre");
+                }else if(oMultaExistente.pagada==false){
+                    
+                    oMultaExistente.pagada=true;
+                    alert("Multa pagada");
+                    
                 }else{
 
-                   this.multas.pop(oMultaExistente);
-                   alert("Multa borrada");
+                   alert("Multa ya pagada anteriormente");
                 }
                      }
             
