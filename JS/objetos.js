@@ -389,9 +389,62 @@ class DGT {
         return sTabla;
     }
 
-    _getTablaMultas(){
-        return this.multas;
+    listadoConductores(){
+
+        let sTabla = '<table border="1">';
+
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>DNI</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Caducidad</th>";
+        sTabla += "</tr></thead>";
+
+        // Contenido de la tabla
+        sTabla += "<tbody>";
+
+     let oPuntosAux  = this.personas.filter( oPersona => oPersona.caducidadCarnet!=null);
+        for (let oPuntos of oPuntosAux){
+            sTabla += oPuntos.toHTMLRow();
+        }
+
+        
+
+        sTabla += "</tbody>";
+        sTabla += "</table>";
+
+        return sTabla;
+
     }
+
+    listadoGuardias(){
+
+        let sTabla = '<table border="1">';
+
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>DNI</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Puesto</th>";
+        sTabla += "</tr></thead>";
+
+        // Contenido de la tabla
+        sTabla += "<tbody>";
+
+     let oPuntosAux  = this.personas.filter( oPersona => oPersona.puesto!=null);
+        for (let oPuntos of oPuntosAux){
+            sTabla += oPuntos.toHTMLRow();
+        }
+
+        
+
+        sTabla += "</tbody>";
+        sTabla += "</table>";
+
+        return sTabla;
+
+
+
+
+
+    }
+
 
     _buscarPersona(sDni){
 

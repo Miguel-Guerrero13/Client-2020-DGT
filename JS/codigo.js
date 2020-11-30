@@ -157,3 +157,23 @@ function mostrarListadoMultasPorGuardia()
     document.getElementById('solucion').style.display = 'block';
 }
 
+function mostrarListadoConductores(){
+
+    let oConductores = oDGT.listadoConductores();
+
+    document.getElementById('solucion').innerHTML = oConductores;
+
+    document.getElementById('solucion').style.display = 'block';
+
+}
+
+function mostrarListadoGuardias(){
+
+    let oGuardias = oDGT.listadoGuardias();
+
+    document.getElementById('solucion').innerHTML = oGuardias;
+
+    document.getElementById('solucion').style.display = 'block';
+
+}
+
