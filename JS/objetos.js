@@ -371,3 +371,23 @@ class DGT {
 
     
 }
+
+/*function Person(name,gender){
+
+    var initial ="";    // we use var key word to make variable private
+
+    function getNameWithInitial(){ // this is the private method to get name with initial
+        console.log(this);
+        initial = this.gender ==="male"?"Mr. ":"Mrs. ";
+        return initial + this.name;
+    }
+
+
+    this.name = name;
+    this.gender = gender;
+    this.getName = function(){
+        return getNameWithInitial.call(this);
+    }
+
+
+}*/
