@@ -1,5 +1,6 @@
 var oDGT = new DGT();
-
+var oPolicia = new GuardiaCivil("555","pepe","lopez","su casa","jefe");
+oDGT.altaGuardia(oPolicia);
 ocultarFormularios();
 
 function ocultarFormularios(){
@@ -144,5 +145,15 @@ function mostrarListadoPuntosConductor(){
 
     document.getElementById('solucion').style.display = 'block';
 
+}
+function mostrarListadoMultasPorGuardia()
+{
+    ocultarFormularios();
+
+    let oMultasPorGuardia = oDGT.listadoMultasPorGuardia();
+
+    document.getElementById('solucion').innerHTML = oMultasPorGuardia;
+
+    document.getElementById('solucion').style.display = 'block';
 }
 

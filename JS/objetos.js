@@ -54,7 +54,7 @@ function Persona(sNif,sNombre,sApellidos,sDireccion){
         GuardiaCivil.prototype.constructor = GuardiaCivil;
 
     
-        Conductor.prototype.toHTMLRow = function (){
+        GuardiaCivil.prototype.toHTMLRow = function (){
     
             let sFila = "<tr>";
             sFila+="<td>"+this.dni+"</td>";
@@ -67,6 +67,22 @@ function Persona(sNif,sNombre,sApellidos,sDireccion){
             return sFila;
             }
 
+            GuardiaCivil.prototype.toHTMLRowMultasPorGuardia = function (){
+                let iContadorMulta = 0;
+                let iSumaImporte = 0;
+               
+
+                let sFila = "<tr>";
+                sFila+="<td>"+this.dni+"</td>";
+                sFila+="<td>"+this.nombre+"</td>";
+                sFila+="<td>"+this.apellidos+"</td>";
+                sFila+="<td>"+this.puesto+"</td>";
+                sFila+="<td>"+iContadorMulta+"</td>";
+                sFila+="<td>"+iSumaImporte+"</td>";
+                sFila += "</tr>";
+                
+                return sFila;
+                }
 
 //Clase nueva
 
@@ -348,6 +364,45 @@ class DGT {
         return sTabla;
     }
 
+    listadoMultasPorGuardia()
+    {
+        let sTabla = '<table border="1">';
+
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>DNI</th><th>Nombre</th><th>Apellidos</th><th>Puesto</th><th>Nº Multa</th><th>Importe Multa</th>";
+        sTabla += "</tr></thead>";
+
+        // Contenido de la tabla
+        sTabla += "<tbody>";
+
+    /*  let oPuntosAux  = this.personas.filter( oPersona => oPersona.dni == this.multas.dni);
+        for (let oPuntos of oPuntosAux){
+            sTabla += oPuntos.toHTMLRowMultasPorGuardia();
+        }
+    */
+        for(let i=0;i<this.personas.length;i++)
+        {
+            
+                    for(let j=0;j<this.multas.length;j++)
+                    {
+                    
+                            sTabla += i.toHTMLRowMultasPorGuardia();
+                        
+                    }
+                
+        }
+        
+
+        sTabla += "</tbody>";
+        sTabla += "</table>";
+
+        return sTabla;
+    }
+
+    _getTablaMultas(){
+        return this.multas;
+    }
 
     _buscarPersona(sDni){
 
@@ -369,6 +424,7 @@ class DGT {
   
       }
 
+    
     
 }
 
