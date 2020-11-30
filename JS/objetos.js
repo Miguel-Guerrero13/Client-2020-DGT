@@ -165,10 +165,43 @@ Multa.prototype.toHTMLRow = function (){
             return sFila;
             }
 
+            Grave.prototype.toHTMLRowPuntosCarnet = function (){
+
+                let sFila = "<tr>";
+                let puntosRestantes = 15 - this.puntos;
+                sFila+="<td>"+this.nifConductror+"</td>";
+                sFila+="<td>"+puntosRestantes+"</td>";
+                sFila += "</tr>";
+                
+                return sFila;
+                }
+    
 
 
+            /*function DGT()
+            {
+                this.multas=[];
+                this.personas=[];
+            }*/
+
+            /*DGT.prototype.altaConductor = function (oC){
+
+                let oConductorExistente = null;
+
+                    oConductorExistente = this._buscarPersona(oC.dni);
+
+                    if(oConductorExistente==null)
+                    {
+                    this.personas.push(oC);
+                    alert("Alta de conductor realizada");
+                    }
+                    else
+                    alert("Ya hay una persona con ese dni");
+                }*/
 
 class DGT {
+
+
 	constructor(){
         this.multas=[];
         this.personas=[];
@@ -282,6 +315,31 @@ class DGT {
 
         for (let oMultas of oMultasAux){
             sTabla += oMultas.toHTMLRowListadoSaldo();
+        }
+
+        sTabla += "</tbody>";
+        sTabla += "</table>";
+
+        return sTabla;
+    }
+
+    listadoPuntosConductores(){
+        let sTabla = '<table border="1">';
+
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>DNI</th><th>Puntos</th>";
+        sTabla += "</tr></thead>";
+
+        // Contenido de la tabla
+        sTabla += "<tbody>";
+
+        // Obtenemos array que no tiene productos con 0 unidades
+        let oPuntosAux  = this.multas.filter( oMulta => oMulta.puntos!=null);
+
+
+        for (let oPuntos of oPuntosAux){
+            sTabla += oPuntos.toHTMLRowPuntosCarnet();
         }
 
         sTabla += "</tbody>";

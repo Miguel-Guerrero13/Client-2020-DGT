@@ -134,4 +134,15 @@ function mostrarListadoSaldoPendiente(){
     document.getElementById('solucion').style.display = 'block';
 }
 
+function mostrarListadoPuntosConductor(){
+    
+    ocultarFormularios();
+
+    let oPuntosConductores = oDGT.listadoPuntosConductores();
+
+    document.getElementById('solucion').innerHTML = oPuntosConductores;
+
+    document.getElementById('solucion').style.display = 'block';
+
+}
 
