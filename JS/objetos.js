@@ -376,22 +376,11 @@ class DGT {
         // Contenido de la tabla
         sTabla += "<tbody>";
 
-    /*  let oPuntosAux  = this.personas.filter( oPersona => oPersona.dni == this.multas.dni);
+     let oPuntosAux  = this.personas.filter( oPersona => oPersona.puesto!=null);
         for (let oPuntos of oPuntosAux){
             sTabla += oPuntos.toHTMLRowMultasPorGuardia();
         }
-    */
-        for(let i=0;i<this.personas.length;i++)
-        {
-            
-                    for(let j=0;j<this.multas.length;j++)
-                    {
-                    
-                            sTabla += i.toHTMLRowMultasPorGuardia();
-                        
-                    }
-                
-        }
+
         
 
         sTabla += "</tbody>";
