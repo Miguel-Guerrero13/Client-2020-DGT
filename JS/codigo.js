@@ -7,6 +7,7 @@ frmAltaConductor.style.display = "none";
 frmAltaGuardia.style.display = "none";
 frmRegistrarMulta.style.display="none";
 frmPagaMulta.style.display="none";
+document.getElementById('solucion').style.display = "none";
 }
 
 function mostrarAltaConductor(){
@@ -84,11 +85,20 @@ function aceptarRegistrarMulta(){
     let dFechaMulta= frmRegistrarMulta.txtFechaMulta.value.trim();
     let bTipoMulta = frmRegistrarMulta.inlineCheckbox1.value.trim();
     let bBonificada = frmRegistrarMulta.inlineRadio1.value.trim();
+    let bBonificada2 = frmRegistrarMulta.inlineRadio2.value.trim();
     let iPuntosMulta = parseInt(frmRegistrarMulta.puntos.value.trim());
+
     if(bTipoMulta == "Leve")
     {
-        let oM = new Leve(iMulta,sNifConductor, sNifGuardia, fImporteMulta,bPagada ,sDescripcionMulta,dFechaMulta,bBonificada);
-        oDGT.altaMultaLeve(oM);
+        if(document.getElementById('inlineRadio2').checked == false){
+            let oM = new Leve(iMulta,sNifConductor, sNifGuardia, fImporteMulta,bPagada ,sDescripcionMulta,dFechaMulta,bBonificada);
+            oDGT.altaMultaLeve(oM);
+        }
+        else{
+            let oM = new Leve(iMulta,sNifConductor, sNifGuardia, fImporteMulta,bPagada ,sDescripcionMulta,dFechaMulta,bBonificada2);
+            oDGT.altaMultaLeve(oM);
+        }
+        
     }
     else
     {
@@ -111,6 +121,17 @@ function aceptarRegistrarMulta(){
   
 
     ocultarFormularios();
+}
+
+function mostrarListadoSaldoPendiente(){
+    
+    ocultarFormularios();
+
+    let oMultasPagadas = oDGT.listadoMultas();
+
+    document.getElementById('solucion').innerHTML = oMultasPagadas;
+
+    document.getElementById('solucion').style.display = 'block';
 }
 
 

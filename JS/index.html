@@ -62,9 +62,9 @@
 
         <!-- Button -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="btnListadoBasico"></label>
+          <label class="col-md-4 control-label" for="btnListadoSaldoPendiente"></label>
           <div class="col-md-4">
-            <input type="button" id="btnListadoBasico" name="btnListadoBasico" class="btn btn-primary" value="Listado básico" />
+            <input type="button" id="btnListadoSaldoPendiente" name="btnListadoSaldoPendiente" class="btn btn-primary" value="Listado saldo pendiente" onclick="mostrarListadoSaldoPendiente()"/>
           </div>
         </div>
         
@@ -301,10 +301,11 @@
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="si">
                         <label class="form-check-label" for="inlineRadio1">Si</label>
-                      </div>
-                      <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="no">
                         <label class="form-check-label" for="inlineRadio2">No</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        
                       </div>
                     </div>
 
@@ -356,6 +357,11 @@
 
 
     </div>
+
+    <div id="solucion" style="display:none" class="solucion">
+
+    </div>
+
     <script src="objetos.js"></script>
     <script src="codigo.js"></script>
     <script type = "text/javascript">

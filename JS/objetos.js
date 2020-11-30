@@ -97,6 +97,22 @@ Multa.prototype.toHTMLRow = function (){
     return sFila;
     }
 
+    Multa.prototype.toHTMLRowListadoSaldo = function (){
+
+        let sFila = "<tr>";
+        sFila+="<td>"+this.idMulta+"</td>";
+        if(this.bonificada=="si"){
+            let fSaldoConImporte = parseFloat(this.importe - (this.importe*0.25));
+            sFila+="<td>"+fSaldoConImporte+"</td>";
+        }
+        else{
+            sFila+="<td>"+this.importe+"</td>";   
+        }
+        sFila += "</tr>";
+        
+        return sFila;
+        }
+
     
     class Leve extends Multa{
 
@@ -248,6 +264,31 @@ class DGT {
             
 
 
+
+    listadoMultas(){
+        let sTabla = '<table border="1">';
+
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>DNI</th><th>Saldo pendiente</th>";
+        sTabla += "</tr></thead>";
+
+        // Contenido de la tabla
+        sTabla += "<tbody>";
+
+        // Obtenemos array que no tiene productos con 0 unidades
+        let oMultasAux  = this.multas.filter( oMulta => oMulta.pagada == false );
+
+
+        for (let oMultas of oMultasAux){
+            sTabla += oMultas.toHTMLRowListadoSaldo();
+        }
+
+        sTabla += "</tbody>";
+        sTabla += "</table>";
+
+        return sTabla;
+    }
 
 
     _buscarPersona(sDni){
