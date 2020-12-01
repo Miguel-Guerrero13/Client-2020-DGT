@@ -491,3 +491,75 @@ class DGT {
                    alert("Ya hay una persona con ese dni");
                 
                 }*/ 
+
+
+
+
+
+                /*
+                
+                function aceptarBajaRemesa() {
+  let iCodigo = parseInt(frmBajaRemesa.txtCodigo.value.trim());
+  let iUnidades = parseInt(frmBajaRemesa.txtUnidades.value.trim());
+  let sNombre = null;
+  let dbPrecio = null;
+
+  let oP = new Producto(iCodigo, sNombre, dbPrecio, iUnidades);
+
+  let resultado = oAlmacen.salidaRemesa(oP);
+  if (resultado == 0) {
+    alert("El producto no existe");
+
+  } else {
+    if (resultado == 1) {
+      alert("La cantidad no es adecuada");
+
+    } else {
+      alert("terminado");
+    }
+
+  }
+  ocultarFormularios();
+}
+  
+                
+                
+                salidaRemesa(oProducto){
+        let oProductoExistente = null;
+
+        oProductoExistente = this._buscarProducto(oProducto.codigo);
+
+
+        if (oProductoExistente == null) {
+            return 0; // 0 si no encuentra el objeto
+        }
+        else 
+        {
+            if (oProductoExistente.unidades >= oProducto.unidades)
+            {
+                oProductoExistente.unidades = oProductoExistente.unidades - oProducto.unidades;
+                if (oProductoExistente.unidades == 0) 
+                {
+                    console.log(oProductoExistente.codigo);
+                    let posicion = this.posicionArray(oProductoExistente.codigo);
+                    this.productos.splice(posicion, 1);
+                    console.log(this.productos);
+                }
+            } 
+            else 
+            {
+                return 1; //1 Si el unidades es mayor a las unidades que tenemos
+            }
+        }
+    }
+
+    posicionArray(codigos) {
+        console.log("as");
+        for (let i = 0; i < this.productos.length; i++) {
+            if (this.productos[i].codigo == codigos) {
+                return i;
+                console.log(i);
+            }
+        }
+
+    }*/
