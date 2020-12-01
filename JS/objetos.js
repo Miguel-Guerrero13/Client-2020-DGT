@@ -376,10 +376,45 @@ class DGT {
         // Contenido de la tabla
         sTabla += "<tbody>";
 
-     let oPuntosAux  = this.personas.filter( oPersona => oPersona.puesto!=null);
+
+
+        for(let i=0;i<this.personas.length;i++){
+
+            let iContadorMulta = 0;
+            let iSumaImporte = 0;
+            
+            if(this.personas.puesto!=""){
+
+                sTabla += "<tr>";
+                sTabla+="<td>"+this.personas[i].dni+"</td>";
+                sTabla+="<td>"+this.personas[i].nombre+"</td>";
+                sTabla+="<td>"+this.personas[i].apellidos+"</td>";
+                sTabla+="<td>"+this.personas[i].puesto+"</td>";
+                
+
+                for(let o=0;o<this.multas.length;o++){
+
+
+                    if(this.personas[i].dni==this.multas[o].nifGuardia){
+
+                        iContadorMulta++;
+                        iSumaImporte+=this.multas[o].importe;
+
+                    }
+                }
+            }
+
+            sTabla+="<td>"+iContadorMulta+"</td>";
+            sTabla+="<td>"+iSumaImporte+"</td>";
+            sTabla += "</tr>";
+
+        }
+
+
+  /*   let oPuntosAux  = this.personas.filter( oPersona => oPersona.puesto!=null);
         for (let oPuntos of oPuntosAux){
             sTabla += oPuntos.toHTMLRowMultasPorGuardia();
-        }
+        }*/
 
         
 
