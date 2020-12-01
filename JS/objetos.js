@@ -470,22 +470,24 @@ class DGT {
     
 }
 
-/*function Person(name,gender){
+/*function DGT()    EJEMPLO DGT Y UN METODO EN FORMA ANITUGA
+            {
+            
+                    this.multas=[];
+                this.personas=[];
 
-    var initial ="";    // we use var key word to make variable private
+            }
 
-    function getNameWithInitial(){ // this is the private method to get name with initial
-        console.log(this);
-        initial = this.gender ==="male"?"Mr. ":"Mrs. ";
-        return initial + this.name;
-    }
+            DGT.prototype.altaConductor= function (oC){
 
-
-    this.name = name;
-    this.gender = gender;
-    this.getName = function(){
-        return getNameWithInitial.call(this);
-    }
-
-
-}*/
+                let oConductorExistente = null;
+        
+                if(oConductorExistente==null)
+                {
+                   this.personas.push(oC);
+                   alert("Alta de conductor realizada");
+                }
+                   else
+                   alert("Ya hay una persona con ese dni");
+                
+                }*/ 
