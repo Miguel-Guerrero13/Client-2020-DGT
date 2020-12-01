@@ -202,7 +202,7 @@ function mostrarimprimir(){
 
 function btnAceptarImprimirPulsado(){
     let idMultaImprimir = document.getElementById('txtIDMultaImprimir').value;
-    resultado = oDGT.imprimirMulta(idMultaImprimir);
+    let resultado = oDGT.imprimirMulta(idMultaImprimir);
     let nuevaVentana = open();
     nuevaVentana.document.body.innerHTML = resultado;
     nuevaVentana.document.title = 'Multa';
