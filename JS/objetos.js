@@ -481,6 +481,69 @@ class DGT {
     }
 
 
+    mostrarListadoFecha(fecha1, fecha2){
+        let resultado="";
+
+        resultado += "<table border='1'>";
+        resultado+= "<tr>";
+        resultado += "<td>ID</td>";
+        resultado += "<td>Fecha</td>";
+        resultado += "<td>Importe</td>";
+        resultado +="</tr>";
+
+        alert (fecha1);
+
+        for(let i=0;i<this.multas.length;i++){
+            let fechaMulta = new Date (this.multas[i].fecha).getTime();
+            if(fechaMulta >= fecha1 && fechaMulta <=fecha2){
+
+                resultado += "<tr>";
+                resultado += `<td>${this.multas[i].idMulta}</td>`;
+                resultado += `<td>${this.multas[i].fecha}</td>`;
+                resultado += `<td>${this.multas[i].importe}</td>`;
+                resultado += "</tr>";
+            }
+        }
+
+        resultado += "</table>";
+
+        return resultado;
+    }
+
+    imprimirMulta(id) {
+
+        let resultado="";
+
+        resultado += "<table border='1'>";
+        resultado+= "<tr>";
+        resultado += "<td>ID</td>";
+        resultado += "<td>NifConductor</td>";
+        resultado += "<td>NifGuardia</td>";
+        resultado += "<td>Importe</td>";
+        resultado += "<td>Pagada</td>";
+        resultado += "<td>Descripcion</td>";
+        resultado += "<td>Fecha</td>";
+        for(let i=0;i<this.multas.length;i++){
+            if(this.multas[i].idMulta==id){
+                if(this.multas[i].bonificada==null){
+                    resultado += "<td>Puntos</td>";
+                }
+                else{
+                    resultado += "<td>Bonificada</td>";
+                }
+            }
+        }
+        resultado +="</tr>";
+
+        for(let i=0;i<this.multas.length;i++){
+            if(this.multas[i].idMulta == id){
+                resultado += this.multas[i].toHTMLRow();
+            }
+        }
+        return resultado;
+    }
+
+
     _buscarPersona(sDni){
 
       let oConductorExistente=null;

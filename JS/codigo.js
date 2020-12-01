@@ -9,6 +9,8 @@ frmAltaGuardia.style.display = "none";
 frmRegistrarMulta.style.display="none";
 frmPagaMulta.style.display="none";
 document.getElementById('solucion').style.display = "none";
+document.getElementById('frmFecha').style.display = "none";
+document.getElementById('frmImprimir').style.display = "none";
 }
 
 function mostrarAltaConductor(){
@@ -158,6 +160,7 @@ function mostrarListadoMultasPorGuardia()
 }
 
 function mostrarListadoConductores(){
+    ocultarFormularios();
 
     let oConductores = oDGT.listadoConductores();
 
@@ -168,6 +171,7 @@ function mostrarListadoConductores(){
 }
 
 function mostrarListadoGuardias(){
+    ocultarFormularios();
 
     let oGuardias = oDGT.listadoGuardias();
 
@@ -177,3 +181,29 @@ function mostrarListadoGuardias(){
 
 }
 
+function mostrarListadoFecha(){
+    ocultarFormularios();
+    document.getElementById('frmFecha').style.display = "block";
+   
+}
+
+function aceptarMultasPorFecha(){
+    let fecha1 = new Date(document.getElementById('txtDate').value).getTime();
+    let fecha2 = new Date(document.getElementById('txtDate2').value).getTime();
+    let sFechas = oDGT.mostrarListadoFecha(fecha1, fecha2);
+    document.getElementById('solucion').innerHTML = sFechas;
+    document.getElementById('solucion').style.display = 'block';
+}
+
+function mostrarimprimir(){
+    ocultarFormularios();
+    document.getElementById('frmImprimir').style.display = "block";
+}
+
+function btnAceptarImprimirPulsado(){
+    let idMultaImprimir = document.getElementById('txtIDMultaImprimir').value;
+    resultado = oDGT.imprimirMulta(idMultaImprimir);
+    let nuevaVentana = open();
+    nuevaVentana.document.body.innerHTML = resultado;
+    nuevaVentana.document.title = 'Multa';
+}

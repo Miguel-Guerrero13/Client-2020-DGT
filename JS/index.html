@@ -98,6 +98,20 @@
             <input type="button" id="btnmostrarListadoGuardias" name="btnmostrarListadoGuardias" class="btn btn-primary" value="Listado guardia civil" onclick="mostrarListadoGuardias()"/>
           </div>
         </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnmostrarListadoFecha"></label>
+          <div class="col-md-4">
+            <input type="button" id="btnmostrarListadoFecha" name="btnmostrarListadoFecha" class="btn btn-primary" value="Listado multas por fecha" onclick="mostrarListadoFecha()"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnimprimir"></label>
+          <div class="col-md-4">
+            <input type="button" id="btnimprimir" name="btnimprimir" class="btn btn-primary" value="Imprimir multa" onclick="mostrarimprimir()"/>
+          </div>
+        </div>
         
         </fieldset>
         </form>
@@ -367,6 +381,69 @@
                     
                     </fieldset>
                     </form>
+
+                    <form class="form-horizontal" name="frmFecha" id="frmFecha">
+                      <fieldset>
+                      
+                      <!-- Form Name -->
+                      <legend>Multas por fecha</legend>
+                      
+                      <!-- Text input-->
+                    
+                      <div class="form-group">
+                          <label class="col-md-4 control-label" for="txtMulta">Fecha inicio</label>  
+                          <div class="col-md-4">
+                          <input id="txtDate" name="txtDate" type="date" placeholder="" class="form-control input-md">
+                            
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="txtMulta">Fecha final</label>  
+                          <div class="col-md-4">
+                          <input id="txtDate2" name="txtDate2" type="date" placeholder="" class="form-control input-md">
+                            
+                          </div>
+                        </div>
+  
+                      <!-- Button -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnaceptarListadoFecha"></label>
+                        <div class="col-md-4">
+                          <input type="button" id="btnaceptarListadoFecha" name="btnaceptarListadoFecha" class="btn btn-primary" value="Aceptar" onclick="aceptarMultasPorFecha();" />
+                        </div>
+                      </div>
+                      
+                      </fieldset>
+                      </form>
+
+                      <form class="form-horizontal" name="frmImprimir" id="frmImprimir">
+                        <fieldset>
+                        
+                        <!-- Form Name -->
+                        <legend>Imprimir multa</legend>
+                        
+                        <!-- Text input-->
+                      
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="txtMulta">Indique la id de la multa</label>  
+                            <div class="col-md-4">
+                            <input id="txtIDMultaImprimir" name="txtIDMultaImprimir" type="text" placeholder="" class="form-control input-md">
+                              
+                            </div>
+                          </div>
+
+    
+                        <!-- Button -->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="btnaceptarImprimir"></label>
+                          <div class="col-md-4">
+                            <input type="button" id="btnaceptarImprimir" name="btnaceptarImprimir" class="btn btn-primary" value="Aceptar" onclick="btnAceptarImprimirPulsado();" />
+                          </div>
+                        </div>
+                        
+                        </fieldset>
+                        </form>
 
 
 
