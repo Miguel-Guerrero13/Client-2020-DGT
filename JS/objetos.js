@@ -354,15 +354,16 @@ class DGT {
         // Contenido de la tabla
         sTabla += "<tbody>";
 
-
+        let iContadorMulta;
+        let iSumaImporte;
 
         for(let i=0;i<this.personas.length;i++){
 
-            let iContadorMulta = 0;
-            let iSumaImporte = 0;
             
-            if(this.personas.puesto!=""){
-
+            
+            if(this.personas[i].puesto!=null){
+                iContadorMulta =0;
+                iSumaImporte=0;
                 sTabla += "<tr>";
                 sTabla+="<td>"+this.personas[i].dni+"</td>";
                 sTabla+="<td>"+this.personas[i].nombre+"</td>";
@@ -379,12 +380,15 @@ class DGT {
                         iSumaImporte+=this.multas[o].importe;
 
                     }
+                    
                 }
+                sTabla+="<td>"+iContadorMulta+"</td>";
+                sTabla+="<td>"+iSumaImporte+"</td>";
+                sTabla += "</tr>";
             }
 
-            sTabla+="<td>"+iContadorMulta+"</td>";
-            sTabla+="<td>"+iSumaImporte+"</td>";
-            sTabla += "</tr>";
+            
+            
 
         }
 
@@ -506,6 +510,7 @@ class DGT {
                 }
                 else{
                     resultado += "<td>Bonificada</td>";
+                    
                 }
             }
         }
