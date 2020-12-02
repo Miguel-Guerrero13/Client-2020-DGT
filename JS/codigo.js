@@ -36,8 +36,8 @@ function aceptarAltaConductor(){
 
     let sNif = frmAltaConductor.txtCodigo.value.trim();
     let sNombre = frmAltaConductor.txtNombre.value.trim();
-    let sApellidos = frmAltaConductor.txtCodigo.value.trim();
-    let sDireccion = frmAltaConductor.txtNombre.value.trim();
+    let sApellidos = frmAltaConductor.txtApellido.value.trim();
+    let sDireccion = frmAltaConductor.txtDireccion.value.trim();
     let dCaducidadCarnet= frmAltaConductor.txtFecha.value.trim();
 
     let oC = new Conductor(sNif,sNombre, sApellidos, sDireccion, dCaducidadCarnet);
