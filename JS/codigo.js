@@ -1,6 +1,5 @@
 var oDGT = new DGT();
-var oPolicia = new GuardiaCivil("555","pepe","lopez","su casa","jefe");
-oDGT.altaGuardia(oPolicia);
+
 ocultarFormularios();
 
 function ocultarFormularios(){
